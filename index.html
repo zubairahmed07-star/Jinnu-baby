@@ -1,61 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Romantic Questions for Jinnat</title>
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<title>Jinnu jaan • Endless Us</title>
+<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
 <style>
 body {
-    background: linear-gradient(120deg, #ffdae0 0%, #fdcde5 60%, #fff0f6 100%);
+    background: linear-gradient(120deg, #ffd7ea 0%, #ffe8f0 70%, #ffeef8 100%);
     font-family: 'Quicksand', Arial, sans-serif;
     margin: 0;
+    min-height: 100vh;
     color: #a0456a;
 }
 .main-card {
     background: #fff7fb;
-    border-radius: 24px;
-    box-shadow: 0 8px 28px rgba(225,120,180,0.13);
-    padding: 38px 28px 30px 28px;
-    max-width: 440px;
-    min-width: 320px;
-    margin: 30px auto;
+    border-radius: 22px;
+    box-shadow: 0 10px 32px rgba(220,120,170,0.12);
+    padding: 36px 25px 27px 25px;
+    max-width: 410px;
+    min-width: 310px;
+    margin: 44px auto 0 auto;
     text-align: center;
 }
 .header {
     font-weight: bold;
-    font-size: 1.32rem;
-    color: #be4d7e;
-    margin-bottom: 10px;
-    letter-spacing: 1.5px;
+    font-size: 1.36rem;
+    color: #bc4d8b;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
 }
 .subtext {
-    font-size: 1.09rem;
+    font-size: 1.13rem;
     color: #da69a0;
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 }
 .question {
-    margin: 24px 0 28px 0;
+    margin: 22px 0 27px 0;
     padding: 14px;
-    background: #f8e5f2;
+    background: #fae4ef;
     border-radius: 12px;
     color: #b05a7a;
-    font-size: 1.16rem;
-    min-height: 40px;
+    font-size: 1.15rem;
+    min-height: 38px;
 }
 .button-group {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 .btn {
-    background: #ffb1d9;
+    background: #ffb3de;
     color: #fff;
     border: none;
-    border-radius: 20px;
-    padding: 14px 0;
-    width: 170px;
-    margin: 0 10px 18px 10px;
-    font-size: 1.1rem;
+    border-radius: 18px;
+    padding: 13px 0;
+    width: 138px;
+    margin: 0 7px 16px 7px;
+    font-size: 1.09rem;
     font-family: inherit;
-    box-shadow: 0 2px 10px rgba(220, 110, 126, 0.10);
+    box-shadow: 0 2px 12px rgba(220,110,120,0.09);
     transition: background 0.3s;
     cursor: pointer;
 }
@@ -63,7 +64,7 @@ body {
     background: #fd95c3;
 }
 .footer {
-    margin-top: 22px;
+    margin-top: 28px;
     color: #be5c79;
     font-size: 1rem;
     text-align: center;
@@ -72,54 +73,68 @@ body {
 </head>
 <body>
 <div class="main-card">
-    <div class="header">Romantic Questions For You</div>
+    <div class="header">Jinnu jaan</div>
     <div class="subtext">15112025 &nbsp; ♾️</div>
-    <div class="question" id="question"></div>
-    <div class="button-group">
-        <button class="btn" onclick="nextQuestion()">Next Question</button>
-        <button class="btn" onclick="endQuestions()">End & Say Thank You</button>
+    <div class="question" id="mainQuestion"></div>
+    <div class="button-group" id="buttons">
+        <button class="btn" id="yesBtn" onclick="handleAnswer(true)">Yes</button>
+        <button class="btn" id="noBtn" onclick="handleAnswer(false)">No</button>
     </div>
 </div>
-<div class="footer">
-    Made with care for <span style="color:#ff69b4;font-weight:bold;">Jinnat</span>
-</div>
+<div class="footer">Made with endless care for <span style="color:#ff69b4;font-weight:bold;">Jinnat</span></div>
 <script>
-const questionsList = [
-  "Do you love sunrises or moonlight more, Jinnat?",
-  "Where do you feel happiest—beside waves, in the rain, or among flowers, Jinnat?",
-  "If you could wish for one thing right now, what would you choose?",
-  "Is your heart drawn to quiet nights or loud laughter?",
-  "Would you rather write a poem or receive one?",
-  "Can happiness be a secret you share with only one person?",
-  "If you could time-travel, which memory would you visit first?",
-  "Is adventure sweeter holding hands or running wild?",
-  "Is love a word, a look, or a feeling for you?",
-  "Would you choose eternal spring or endless winter stories together?",
-  "What's the bravest dream you want to share, Jinnat?",
-  "What's your favorite way to say 'I care'?",
-  "Is a perfect day with coffee or walking under stars?",
-  "Are you ready for a thousand new adventures—starting now?",
-  "If you could hear only one song for a week, what would it be?",
-  "Is happiness best discovered quietly, or should it be announced to the world?"
+const milestones = [
+    "Open me... let's continue us? 💗",
+    "Will you promise: no more bad words or behaviour between us?",
+    "Let us start the endless one, together?",
+    "Thank you for believing in us, Jinnat! 💖"
 ];
-let index = 0;
-function showQuestion() {
-    document.getElementById("question").innerHTML = questionsList[index % questionsList.length];
+const romanticQuestions = [
+    "Would you let me make you smile, even today?",
+    "Can we turn every 'No' into a sweet new beginning?",
+    "Will you let laughter replace sadness every time?",
+    "Are you willing to trust me for another chance?",
+    "Can your heart forgive and grow with mine?",
+    "Will you let love change our destiny?",
+    "Is happiness with me still your wish?",
+    "Would you dance with me through every season, Jinnat?",
+    "Can you imagine our laughter lasting a lifetime?",
+    "Is togetherness our happiest place?",
+    "Will you say yes to forever with me?"
+];
+let step = 0, romanticIdx = 0, inRomantic = false;
+
+function showStep() {
+    document.getElementById("mainQuestion").innerHTML = milestones[step];
 }
-function nextQuestion() {
-    index++;
-    if (index < questionsList.length) {
-        showQuestion();
+function showRomanticQuestion() {
+    inRomantic = true;
+    document.getElementById("mainQuestion").innerHTML = romanticQuestions[romanticIdx % romanticQuestions.length];
+    romanticIdx++;
+}
+function handleAnswer(isYes) {
+    if (!inRomantic) {
+        if (isYes) {
+            step++;
+            if (step < milestones.length) {
+                showStep();
+            } else {
+                document.getElementById("mainQuestion").innerHTML = milestones[milestones.length - 1];
+                document.getElementById("buttons").style.display = "none";
+            }
+        } else {
+            showRomanticQuestion();
+        }
     } else {
-        document.getElementById("question").innerHTML = "That was the last question! Thank you for sharing with Jinnat.";
-        document.querySelectorAll(".btn").forEach(btn => btn.style.display = 'none');
+        if (isYes) {
+            inRomantic = false;
+            showStep();
+        } else {
+            showRomanticQuestion();
+        }
     }
 }
-function endQuestions() {
-    document.getElementById("question").innerHTML = "Thank you for your answers and presence, Jinnat! 💖";
-    document.querySelectorAll(".btn").forEach(btn => btn.style.display = 'none');
-}
-showQuestion();
+showStep();
 </script>
 </body>
 </html>
