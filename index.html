@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Infinite Questions for Jinnat</title>
+<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet" />
+<style>
+body {
+    background: linear-gradient(135deg, #ffe6f0 0%, #ffb5c0 100%);
+    font-family: 'Quicksand', Arial, sans-serif;
+    margin: 0;
+    text-align: center;
+    color: #843652;
+}
+.letter {
+    border: 3px solid #f4a9b4;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 60px auto 18px auto;
+    max-width: 440px;
+    background-color: #fff0f6;
+    font-family: 'Quicksand', Arial, sans-serif;
+}
+.letter-header {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #b05a7a;
+}
+#topText {
+    font-size: 1.2rem;
+    margin-bottom: 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.question {
+    font-size: 1.28rem;
+    margin-bottom: 32px;
+    color: #b05a7a;
+}
+.cta-btn {
+    width: 170px;
+    background: #ffb6d5;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 13px 0;
+    margin: 0 13px 18px 13px;
+    font-size: 1.13rem;
+    box-shadow: 0 2px 10px rgba(220, 110, 126, 0.11);
+    transition: background 0.3s;
+    cursor: pointer;
+    font-family: inherit;
+}
+.cta-btn:hover {
+    background: #ff90b7;
+}
+.footer {
+    margin-top: 26px;
+    color: #c87896;
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+}
+</style>
+</head>
+<body>
+<div class="letter">
+<div id="topText">
+    <div>15112025</div>
+    <div>♾️</div>
+</div>
+<div class="letter-header">Your Endless Questions</div>
+<div class="question" id="mainQuestion"></div>
+<button class="cta-btn" onclick="handleAnswer(true)">Yes, I do!</button>
+<button class="cta-btn" onclick="handleAnswer(false)">No, ask me more</button>
+</div>
+<div class="footer">
+Made with love for <span style="color:#ff69b4;font-weight:bold;">Jinnat</span>
+</div>
+<script>
+const questions = [
+    "Would you dance with me in the rain, Jinnat?",
+    "Is your heartbeat in sync with mine tonight?",
+    "Can you imagine our laughter echoing for decades?",
+    "Would you share your dreams in a whisper with me?",
+    "Could your hand find mine in every crowd?",
+    "Will you be my reason to smile every sunrise?",
+    "Do you trust that our journey will always find adventure?",
+    "Can I be the poetry in your quiet moments?",
+    "Will your hug be my shelter on stormy days?",
+    "Could you love me through a thousand little surprises?",
+    "Would you call my name with joy in secret places?",
+    "Will your hope light up my darkest doubts?",
+    "Can we create family out of precious memories?",
+    "Would you let me write love letters to your soul?",
+    "Will happy tears outnumber sad ones for us?",
+    "Is every day worth a new promise with me?",
+    "Can our story make even time jealous?",
+    "Would you choose me again in another life?"
+    // Add even more questions below—this array is easily expandable!
+];
+let idx = 0;
+function showQuestion() {
+    document.getElementById("mainQuestion").innerHTML = questions[idx % questions.length];
+}
+function handleAnswer(isYes) {
+    if (isYes) {
+        document.getElementById("mainQuestion").innerHTML =
+            "Thank you for saying Yes! Every moment is more beautiful with your answer.";
+        document.querySelectorAll(".cta-btn").forEach(btn => btn.style.display = 'none');
+    } else {
+        idx++;
+        showQuestion();
+    }
+}
+showQuestion();
+</script>
+</body>
+</html>
