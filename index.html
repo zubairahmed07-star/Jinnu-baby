@@ -62,10 +62,11 @@
 </head>
 <body>
   <h2 style="margin-top:18px;">💕 Rong Diya Morom 💕<br>For Jinnu Jaan</h2>
+
+  <!-- Embedded Assamese song (can autoplay if you choose) -->
   <div style="margin: 15px 0;">
-    <!-- AUTOPLAY is back, but will be blocked on most mobile/devices until user interacts -->
     <iframe width="295" height="56" src="https://www.youtube.com/embed/rFoUDT361h0?autoplay=1" title="Rong Diya Morom" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <div style="font-size:0.95em;color:#c2185b; margin-top:2px;">If song doesn't play, tap ▶️ in the player (browser policy may block).</div>
+    <div style="font-size:0.92em;color:#c2185b;">(Rong Diya Morom – Zubeen Garg & Shreya Ghoshal – Assamese Romance)</div>
   </div>
 
   <div class="quiz-card" id="quizCard">
@@ -76,22 +77,24 @@
   </div>
 
   <script>
+    // PHOTO and GIF links (upload GIFs to Giphy/Tenor, or link directly from suggested sites)
     const photoLinks = [
-      '1000039475.jpg',
-      '1000039476.jpg',
-      '1000039474.jpg',
-      '1000039477.jpg'
+      '1000026775.jpg',
+      '1000026421.jpg',
+      '1000027244.jpg',
+      '1000026783.jpg'
     ];
     const gifLinks = [
-      'https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif',
-      'https://media.giphy.com/media/10tIjpzIu8fe0/giphy.gif',
-      'https://media.giphy.com/media/WS6OGV1JJy2ic/giphy.gif',
-      'https://media.giphy.com/media/l3vR9O6O6vN9cRr7y/giphy.gif'
+      'https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif', // hearts pop
+      'https://media.giphy.com/media/10tIjpzIu8fe0/giphy.gif', // blushing
+      'https://media.giphy.com/media/WS6OGV1JJy2ic/giphy.gif', // romantic hearts
+      'https://media.giphy.com/media/l3vR9O6O6vN9cRr7y/giphy.gif' // love confetti
     ];
+    // QUIZ (questions, correct answers, romantic lines, lyrics)
     const quiz = [
       {
         q: "What's our anniversary date?",
-        ans: "07012024",
+        ans: "07 01 2024",
         msg: "You remembered our special day—every moment with you feels magical!",
         lyric: "ৰং দিয়া মৰম ৰং ভাল পোৱা সজাও ৰামধেনু"
       },
@@ -108,17 +111,15 @@
         lyric: "ৰং জীৱনৰে সুখ দুখৰে সজাও ৰামধেনু"
       }
     ];
-
     let step = 0;
-    document.addEventListener("DOMContentLoaded", function() {
-      document.getElementById("question").innerText = quiz[step].q;
-    });
+
+    document.getElementById("question").innerText = quiz[step].q;
 
     function checkAnswer() {
       const input = document.getElementById("answerBox").value.trim().toLowerCase();
       const correct = quiz[step].ans.toLowerCase();
       const feedbackDiv = document.getElementById("feedback");
-      feedbackDiv.innerHTML = "";
+      feedbackDiv.innerHTML = ""; // Clear before
       if (input === correct) {
         let html = `<img src="${photoLinks[step]}" class="photo" alt="Our Photo">`;
         html += `<div class="lyric">${quiz[step].lyric}</div>`;
