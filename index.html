@@ -3,72 +3,93 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rong Diya Morom Romantic Quiz</title>
+<title>Jinnu jaan - Romantic Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #ffe6f2;
-    overflow-x: hidden;
     color: #660033;
     position: relative;
     min-height: 100vh;
+    overflow-x: hidden;
   }
-  h1 {
+  header {
     text-align: center;
     margin-top: 1.5rem;
-    font-size: 2.5rem;
-    font-weight: bold;
+  }
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    font-weight: 700;
     letter-spacing: 0.1rem;
+    color: #d6336c;
   }
   .container {
     max-width: 480px;
-    margin: 2rem auto;
+    margin: 2rem auto 3rem auto;
     background: #fff0f6;
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 4px 15px rgba(255,20,70,0.2);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 6px 20px rgba(255, 20, 70, 0.3);
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
   .question {
     font-size: 1.4rem;
-    margin-bottom: 1rem;
-    min-height: 60px;
+    margin-bottom: 1.25rem;
+    min-height: 70px;
   }
   input[type="text"] {
     width: 80%;
-    padding: 0.5rem 0.75rem;
-    font-size: 1.1rem;
-    border-radius: 25px;
+    padding: 0.6rem 1rem;
+    font-size: 1.2rem;
+    border-radius: 30px;
     border: 2px solid #ff4d94;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-align: center;
+    outline-offset: 2px;
+    outline-color: #e60073;
+    transition: border-color 0.3s;
+  }
+  input[type="text"]:focus {
+    border-color: #d6336c;
   }
   button {
-    background-color: #ff4d94;
+    background-color: #d6336c;
     color: white;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 700;
     border: none;
     border-radius: 30px;
-    padding: 0.6rem 2.4rem;
+    padding: 0.75rem 3rem;
     cursor: pointer;
     transition: background 0.3s ease;
+    box-shadow: 0 6px 15px rgba(214, 51, 108, 0.7);
   }
   button:hover {
-    background-color: #e60073;
+    background-color: #b52b5a;
   }
   .reward-gif {
     display: block;
-    margin: 1.5rem auto 0 auto;
-    max-width: 200px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #ff66bb88;
+    margin: 2rem auto 0 auto;
+    max-width: 220px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px #d6336c88;
   }
   .feedback {
-    margin: 1rem 0 0 0;
-    font-weight: bold;
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
     color: #cc0066;
+  }
+  .end-message {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #b52b5a;
+    margin-top: 2rem;
   }
   /* Hearts background */
   .heart {
@@ -77,7 +98,6 @@
     height: 20px;
     background-color: #ff66bb;
     transform: rotate(-45deg);
-    left: 50%;
     bottom: 0;
     animation: floatUp 4s linear infinite;
     opacity: 0.8;
@@ -115,13 +135,11 @@
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
-    margin-top: 20px;
-    overflow: hidden;
     max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #ff66bb88;
+    margin: 0 auto 2rem auto;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 0 25px #d6336c88;
   }
   .video-container iframe {
     position: absolute;
@@ -129,21 +147,87 @@
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: 12px;
+    border-radius: 16px;
+  }
+  /* Open Me screen */
+  #open-screen {
+    position: fixed;
+    inset: 0;
+    background: #ff66bbcc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+  }
+  #open-screen h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px #d6336c;
+  }
+  #open-screen .pop-up-couple {
+    width: 200px;
+    height: 200px;
+    background: url('https://media.giphy.com/media/3ohhwF34cGDoFFhRfy/giphy.gif') no-repeat center center;
+    background-size: contain;
+    animation: popUp 1.5s ease forwards;
+  }
+  @keyframes popUp {
+    0% {
+      transform: scale(0.2);
+      opacity: 0;
+    }
+    70% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  #open-screen button {
+    margin-top: 2rem;
+    background-color: #fff0f6;
+    color: #d6336c;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 0.7rem 2rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px #d6336c88;
+    transition: background 0.3s ease;
+  }
+  #open-screen button:hover {
+    background-color: #d6336c;
+    color: white;
   }
 </style>
 </head>
 <body>
 
-<h1>Rong Diya Morom Romantic Quiz</h1>
+<header>
+  <h1>Jinnu jaan</h1>
+</header>
 
-<div class="container" id="quiz-container">
-  <div class="question" id="question">When did our relationship start?</div>
+<div id="open-screen">
+  <h2>Open Me</h2>
+  <div class="pop-up-couple"></div>
+  <button id="start-btn">Start Quiz</button>
+</div>
+
+<div class="container" id="quiz-container" style="display:none;">
+  <div class="question" id="question"></div>
   <input type="text" id="answer-input" placeholder="Type your answer here" autocomplete="off" />
   <br/>
   <button id="submit-button">Submit</button>
   <div class="feedback" id="feedback"></div>
-  <img src="" alt="Reward GIF" id="reward-gif" class="reward-gif" style="display:none;" />
+  <img src="" alt="Cute Couple GIF" id="reward-gif" class="reward-gif" style="display:none;" />
+  <div class="end-message" id="end-message" style="display:none;"></div>
 </div>
 
 <div class="video-container">
@@ -153,70 +237,113 @@
 </div>
 
 <script>
-  const questions = [
+  const mainQuestions = [
     "When did our relationship start?",
     "Where's the place Zubair goes every day?",
     "What food does Zubair like the most?"
   ];
 
-  const answers = [
+  const mainAnswers = [
     "07012024",
     "gym",
     "biryani"
   ];
 
+  const extraQuestions = [
+    "Do I make your heart flutter?",
+    "Shall we chase the stars together?",
+    "Will you be my forever love?"
+  ];
+
+  const extraAnswers = [
+    "yes",
+    "yes",
+    "yes"
+  ];
+
   const gifs = [
     "https://media.giphy.com/media/3orieYcZSmsN3ZxIcy/giphy.gif",
     "https://media.giphy.com/media/l0MYB8Ory7Hqefo9a/giphy.gif",
-    "https://media.giphy.com/media/OuE2zX8K9l6rZedpbS/giphy.gif"
+    "https://media.giphy.com/media/OuE2zX8K9l6rZedpbS/giphy.gif",
+    "https://media.giphy.com/media/l0MYuTgivPZRMHQZa/giphy.gif",
+    "https://media.giphy.com/media/mjqNy4F1EyUvS/giphy.gif",
+    "https://media.giphy.com/media/11sBLVxNs7v6WA/giphy.gif"
   ];
 
+  const thankYouMessage = "Thank you, Jinnu jaan 💖 This love story is ours forever.";
+
   const questionElem = document.getElementById("question");
-  const answerInput = document.getElementById("answer-input");
+  const inputElem = document.getElementById("answer-input");
   const submitBtn = document.getElementById("submit-button");
   const feedbackElem = document.getElementById("feedback");
-  const rewardGif = document.getElementById("reward-gif");
+  const gifElem = document.getElementById("reward-gif");
+  const endMessageElem = document.getElementById("end-message");
+  const openScreen = document.getElementById("open-screen");
+  const quizContainer = document.getElementById("quiz-container");
+  const startBtn = document.getElementById("start-btn");
 
   let currentIndex = 0;
+  let inExtra = false;
 
   function showQuestion() {
-    questionElem.textContent = questions[currentIndex];
-    answerInput.value = "";
     feedbackElem.textContent = "";
-    rewardGif.style.display = "none";
+    gifElem.style.display = "none";
+    inputElem.value = "";
+    if (!inExtra) {
+      questionElem.textContent = mainQuestions[currentIndex];
+    } else {
+      questionElem.textContent = extraQuestions[currentIndex];
+    }
   }
 
   submitBtn.addEventListener("click", () => {
-    const userAnswer = answerInput.value.trim().toLowerCase();
-    const correctAnswer = answers[currentIndex].toLowerCase();
-
-    if(userAnswer === "") {
-      feedbackElem.textContent = "Please enter an answer.";
+    const answer = inputElem.value.trim().toLowerCase();
+    if (answer === "") {
+      feedbackElem.textContent = "Please type your answer.";
       return;
     }
 
-    if(userAnswer === correctAnswer) {
+    let correctAnswer;
+    if (!inExtra) {
+      correctAnswer = mainAnswers[currentIndex];
+    } else {
+      correctAnswer = extraAnswers[currentIndex];
+    }
+
+    if (answer === correctAnswer.toLowerCase()) {
       feedbackElem.textContent = "Correct! ❤";
-      rewardGif.src = gifs[currentIndex];
-      rewardGif.style.display = "block";
+      gifElem.src = gifs[inExtra ? mainQuestions.length + currentIndex : currentIndex];
+      gifElem.style.display = "block";
 
       currentIndex++;
-      if (currentIndex >= questions.length) {
+      if (!inExtra && currentIndex >= mainQuestions.length) {
+        inExtra = true;
         currentIndex = 0;
+        setTimeout(showQuestion, 3500);
+      } else if (inExtra && currentIndex >= extraQuestions.length) {
+        gifElem.style.display = "none";
+        feedbackElem.textContent = "";
+        questionElem.style.display = "none";
+        inputElem.style.display = "none";
+        submitBtn.style.display = "none";
+        endMessageElem.textContent = thankYouMessage;
+        endMessageElem.style.display = "block";
+      } else {
+        setTimeout(showQuestion, 3500);
       }
-
-      setTimeout(() => {
-        showQuestion();
-      }, 3500);
     } else {
-      feedbackElem.textContent = "That's not quite right. Try again!";
-      rewardGif.style.display = "none";
+      feedbackElem.textContent = "That's not right. Please try again.";
+      gifElem.style.display = "none";
     }
   });
 
-  showQuestion();
+  startBtn.addEventListener("click", () => {
+    openScreen.style.display = "none";
+    quizContainer.style.display = "block";
+    showQuestion();
+  });
 
-  // Hearts background animation
+  // Hearts animation
   function createHeart() {
     const heart = document.createElement('div');
     heart.classList.add('heart');
@@ -227,6 +354,7 @@
     setTimeout(() => heart.remove(), 6000);
   }
   setInterval(createHeart, 350);
+
 </script>
 
 </body>
