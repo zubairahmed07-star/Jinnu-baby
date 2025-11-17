@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -12,6 +12,7 @@
     overflow-x: hidden;
     color: #660033;
     position: relative;
+    min-height: 100vh;
   }
   h1 {
     text-align: center;
@@ -27,14 +28,20 @@
     border-radius: 12px;
     padding: 1.5rem 2rem;
     box-shadow: 0 4px 15px rgba(255,20,70,0.2);
+    text-align: center;
   }
   .question {
     font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-    min-height: 80px;
-    text-align: center;
+    margin-bottom: 1rem;
+    min-height: 60px;
   }
-  .buttons {
+  input[type="text"] {
+    width: 80%;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    border: 2px solid #ff4d94;
+    margin-bottom: 1rem;
     text-align: center;
   }
   button {
@@ -45,7 +52,6 @@
     border: none;
     border-radius: 30px;
     padding: 0.6rem 2.4rem;
-    margin: 0 1rem;
     cursor: pointer;
     transition: background 0.3s ease;
   }
@@ -54,17 +60,15 @@
   }
   .reward-gif {
     display: block;
-    margin: 2rem auto;
-    max-width: 80%;
+    margin: 1.5rem auto 0 auto;
+    max-width: 200px;
     border-radius: 12px;
     box-shadow: 0 0 15px #ff66bb88;
   }
-  .lyrics {
-    font-style: italic;
-    text-align: center;
+  .feedback {
+    margin: 1rem 0 0 0;
+    font-weight: bold;
     color: #cc0066;
-    margin-top: 1rem;
-    font-size: 1rem;
   }
   /* Hearts background */
   .heart {
@@ -77,6 +81,7 @@
     bottom: 0;
     animation: floatUp 4s linear infinite;
     opacity: 0.8;
+    z-index: 0;
   }
   .heart:before,
   .heart:after {
@@ -133,13 +138,12 @@
 <h1>Rong Diya Morom Romantic Quiz</h1>
 
 <div class="container" id="quiz-container">
-  <div class="question" id="question">Do you love me?</div>
-  <div class="buttons">
-    <button id="yes-button">Yes</button>
-    <button id="no-button">No</button>
-  </div>
+  <div class="question" id="question">When did our relationship start?</div>
+  <input type="text" id="answer-input" placeholder="Type your answer here" autocomplete="off" />
+  <br/>
+  <button id="submit-button">Submit</button>
+  <div class="feedback" id="feedback"></div>
   <img src="" alt="Reward GIF" id="reward-gif" class="reward-gif" style="display:none;" />
-  <div class="lyrics" id="lyrics"></div>
 </div>
 
 <div class="video-container">
@@ -149,78 +153,68 @@
 </div>
 
 <script>
-  // Questions array
   const questions = [
-    "Do you love me?",
-    "Will you be mine forever?",
-    "Is our love as sweet as the song?",
-    "Do you remember our special day?",
-    "Will you keep my heart safe?",
-    "Can we make every moment magical?",
-    "Are you my one and only?",
-    "Will you dance with me through life?",
+    "When did our relationship start?",
+    "Where's the place Zubair goes every day?",
+    "What food does Zubair like the most?"
   ];
 
-  // Romantic Assamese lyrics lines from "Rong Diya Morom"
-  const lyricsLines = [
-    "ৰং দিয়া মৰম তোমাৰ মোৰ হৃদয়ত বাজে।",
-    "মই তোমালৈ নিঃস্বাৰ্থ ভালপোৱা কৰো।",
-    "সপোনবোৰ তোমাৰ সৈতে হাতত ধৰি থাকোঁ।",
-    "বাৰিষা দিনে তোমালৈ মোৰ মৰম ক’ব।",
-    "জোনাকৰ নিচিনা তোমাৰ হাঁহি।",
-    "এই মৰম সপোন সদায় তোৰ বাবে।",
-    "সোনোৱালী ফূটি উঠা ফুলৰ দৰে মৰম।",
-    "তোমাৰ হাতত হাত ধৰি আগুৱাওঁ তোমাৰ পথ।"
+  const answers = [
+    "07012024",
+    "gym",
+    "biryani"
   ];
 
-  // GIF links of cute cartoon couples from public sources (can replace with actual URLs)
-  const gifLinks = [
-    "https://media.giphy.com/media/1BdIjlIex4kEi/giphy.gif",
-    "https://media.giphy.com/media/PPd9GsXYH3m6g/giphy.gif",
-    "https://media.giphy.com/media/xUOxfjsWgfHb4W5IZC/giphy.gif",
-    "https://media.giphy.com/media/CnJPvlBj9s6Tm/giphy.gif",
-    "https://media.giphy.com/media/3oEjI5VtIhHvK37WYo/giphy.gif",
-    "https://media.giphy.com/media/3oz8xDpDgAcmv3lG8M/giphy.gif",
-    "https://media.giphy.com/media/l4JyOCNEfXvVYEqB2/giphy.gif",
-    "https://media.giphy.com/media/26gsspf1u7ry7rZrS/giphy.gif"
+  const gifs = [
+    "https://media.giphy.com/media/3orieYcZSmsN3ZxIcy/giphy.gif",
+    "https://media.giphy.com/media/l0MYB8Ory7Hqefo9a/giphy.gif",
+    "https://media.giphy.com/media/OuE2zX8K9l6rZedpbS/giphy.gif"
   ];
 
   const questionElem = document.getElementById("question");
-  const yesBtn = document.getElementById("yes-button");
-  const noBtn = document.getElementById("no-button");
+  const answerInput = document.getElementById("answer-input");
+  const submitBtn = document.getElementById("submit-button");
+  const feedbackElem = document.getElementById("feedback");
   const rewardGif = document.getElementById("reward-gif");
-  const lyricsElem = document.getElementById("lyrics");
 
   let currentIndex = 0;
 
-  function showQuestion(index) {
-    questionElem.textContent = questions[index];
+  function showQuestion() {
+    questionElem.textContent = questions[currentIndex];
+    answerInput.value = "";
+    feedbackElem.textContent = "";
     rewardGif.style.display = "none";
-    lyricsElem.textContent = "";
   }
 
-  function showReward(index) {
-    rewardGif.src = gifLinks[index];
-    rewardGif.style.display = "block";
-    lyricsElem.textContent = lyricsLines[index];
-  }
+  submitBtn.addEventListener("click", () => {
+    const userAnswer = answerInput.value.trim().toLowerCase();
+    const correctAnswer = answers[currentIndex].toLowerCase();
 
-  yesBtn.addEventListener("click", () => {
-    showReward(currentIndex);
-    currentIndex++;
-    if (currentIndex >= questions.length) {
-      currentIndex = 0; // loop back to start
+    if(userAnswer === "") {
+      feedbackElem.textContent = "Please enter an answer.";
+      return;
     }
-    setTimeout(() => {
-      showQuestion(currentIndex);
-    }, 3500);
+
+    if(userAnswer === correctAnswer) {
+      feedbackElem.textContent = "Correct! ❤";
+      rewardGif.src = gifs[currentIndex];
+      rewardGif.style.display = "block";
+
+      currentIndex++;
+      if (currentIndex >= questions.length) {
+        currentIndex = 0;
+      }
+
+      setTimeout(() => {
+        showQuestion();
+      }, 3500);
+    } else {
+      feedbackElem.textContent = "That's not quite right. Try again!";
+      rewardGif.style.display = "none";
+    }
   });
 
-  noBtn.addEventListener("click", () => {
-    alert("Please say yes to my heart! ❤️");
-  });
-
-  showQuestion(currentIndex);
+  showQuestion();
 
   // Hearts background animation
   function createHeart() {
