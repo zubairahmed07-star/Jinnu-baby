@@ -1,157 +1,239 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Rong Diya Morom | For Jinnu Jaan</title>
-  <style>
-    body {
-      background: #ffe6f2;
-      font-family: 'Arial Rounded MT', Arial, sans-serif;
-      color: #ad1457;
-      text-align: center;
-      padding: 0;
-      margin: 0;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rong Diya Morom Romantic Quiz</title>
+<style>
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffe6f2;
+    overflow-x: hidden;
+    color: #660033;
+    position: relative;
+  }
+  h1 {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+  }
+  .container {
+    max-width: 480px;
+    margin: 2rem auto;
+    background: #fff0f6;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 15px rgba(255,20,70,0.2);
+  }
+  .question {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    min-height: 80px;
+    text-align: center;
+  }
+  .buttons {
+    text-align: center;
+  }
+  button {
+    background-color: #ff4d94;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 0.6rem 2.4rem;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background-color: #e60073;
+  }
+  .reward-gif {
+    display: block;
+    margin: 2rem auto;
+    max-width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #ff66bb88;
+  }
+  .lyrics {
+    font-style: italic;
+    text-align: center;
+    color: #cc0066;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  /* Hearts background */
+  .heart {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background-color: #ff66bb;
+    transform: rotate(-45deg);
+    left: 50%;
+    bottom: 0;
+    animation: floatUp 4s linear infinite;
+    opacity: 0.8;
+  }
+  .heart:before,
+  .heart:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ff66bb;
+    border-radius: 50%;
+  }
+  .heart:before {
+    top: -10px;
+    left: 0;
+  }
+  .heart:after {
+    left: 10px;
+    top: 0;
+  }
+  @keyframes floatUp {
+    0% {
+      transform: translateX(0) translateY(0) rotate(-45deg);
+      opacity: 0.8;
     }
-    .quiz-card {
-      background: #fff8fc;
-      border-radius: 15px;
-      box-shadow: 0 0 18px #ad145799;
-      margin: 30px auto;
-      padding: 24px 16px;
-      max-width: 330px;
-      min-height: 220px;
+    100% {
+      transform: translateX(calc(var(--x) * 20px)) translateY(-600px) rotate(-45deg);
+      opacity: 0;
     }
-    input[type='text'] {
-      border: 1.5px solid #ad1457;
-      border-radius: 8px;
-      font-size: 1.1em;
-      padding: 5px 10px;
-      outline: none;
-    }
-    button {
-      background: #fa92c7;
-      border-radius: 8px;
-      border: none;
-      color: #fff;
-      padding: 8px 20px;
-      font-size: 1em;
-      margin-top: 15px;
-      cursor: pointer;
-    }
-    img.photo {
-      width: 200px;
-      border-radius: 16px;
-      box-shadow: 0 0 9px #ad145733;
-      margin: 8px 0;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .lyric {
-      font-family: 'Baloo Da 2', cursive;
-      font-size: 1.1em;
-      margin: 14px 0 5px;
-      color: #d81b60;
-    }
-    .gif {
-      width: 90px;
-      margin: 5px auto;
-      display: block;
-    }
-  </style>
+  }
+  /* Responsive iframe */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    margin-top: 20px;
+    overflow: hidden;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #ff66bb88;
+  }
+  .video-container iframe {
+    position: absolute;
+    top:0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+  }
+</style>
 </head>
 <body>
-  <h2 style="margin-top:18px;">💕 Rong Diya Morom 💕<br>For Jinnu Jaan</h2>
 
-  <!-- Embedded Assamese song (can autoplay if you choose) -->
-  <div style="margin: 15px 0;">
-    <iframe width="295" height="56" src="https://www.youtube.com/embed/rFoUDT361h0?autoplay=1" title="Rong Diya Morom" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    <div style="font-size:0.92em;color:#c2185b;">(Rong Diya Morom – Zubeen Garg & Shreya Ghoshal – Assamese Romance)</div>
+<h1>Rong Diya Morom Romantic Quiz</h1>
+
+<div class="container" id="quiz-container">
+  <div class="question" id="question">Do you love me?</div>
+  <div class="buttons">
+    <button id="yes-button">Yes</button>
+    <button id="no-button">No</button>
   </div>
+  <img src="" alt="Reward GIF" id="reward-gif" class="reward-gif" style="display:none;" />
+  <div class="lyrics" id="lyrics"></div>
+</div>
 
-  <div class="quiz-card" id="quizCard">
-    <div id="question"></div>
-    <input type="text" id="answerBox" placeholder="Type your answer here..."/>
-    <button onclick="checkAnswer()">Submit</button>
-    <div id="feedback"></div>
-  </div>
+<div class="video-container">
+  <iframe 
+    src="https://www.youtube.com/embed/rFoUDT361h0?autoplay=1&mute=0&controls=1&loop=1&playlist=rFoUDT361h0" 
+    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
 
-  <script>
-    // PHOTO and GIF links (upload GIFs to Giphy/Tenor, or link directly from suggested sites)
-    const photoLinks = [
-      '1000026775.jpg',
-      '1000026421.jpg',
-      '1000027244.jpg',
-      '1000026783.jpg'
-    ];
-    const gifLinks = [
-      'https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif', // hearts pop
-      'https://media.giphy.com/media/10tIjpzIu8fe0/giphy.gif', // blushing
-      'https://media.giphy.com/media/WS6OGV1JJy2ic/giphy.gif', // romantic hearts
-      'https://media.giphy.com/media/l3vR9O6O6vN9cRr7y/giphy.gif' // love confetti
-    ];
-    // QUIZ (questions, correct answers, romantic lines, lyrics)
-    const quiz = [
-      {
-        q: "What's our anniversary date?",
-        ans: "07012024",
-        msg: "You remembered our special day—every moment with you feels magical!",
-        lyric: "ৰং দিয়া মৰম ৰং ভাল পোৱা সজাও ৰামধেনু"
-      },
-      {
-        q: "What's Zubair's favorite food?",
-        ans: "biryani",
-        msg: "Yes! The best biryani—only because you know my heart.",
-        lyric: "এবুকু মৰমৰ বাহিৰে মোৰ বুলিবলে আছে কিনো"
-      },
-      {
-        q: "Where does Zubair go every day?",
-        ans: "gym",
-        msg: "You know my strength and where I love to go. You make every day better.",
-        lyric: "ৰং জীৱনৰে সুখ দুখৰে সজাও ৰামধেনু"
-      }
-    ];
-    let step = 0;
+<script>
+  // Questions array
+  const questions = [
+    "Do you love me?",
+    "Will you be mine forever?",
+    "Is our love as sweet as the song?",
+    "Do you remember our special day?",
+    "Will you keep my heart safe?",
+    "Can we make every moment magical?",
+    "Are you my one and only?",
+    "Will you dance with me through life?",
+  ];
 
-    document.getElementById("question").innerText = quiz[step].q;
+  // Romantic Assamese lyrics lines from "Rong Diya Morom"
+  const lyricsLines = [
+    "ৰং দিয়া মৰম তোমাৰ মোৰ হৃদয়ত বাজে।",
+    "মই তোমালৈ নিঃস্বাৰ্থ ভালপোৱা কৰো।",
+    "সপোনবোৰ তোমাৰ সৈতে হাতত ধৰি থাকোঁ।",
+    "বাৰিষা দিনে তোমালৈ মোৰ মৰম ক’ব।",
+    "জোনাকৰ নিচিনা তোমাৰ হাঁহি।",
+    "এই মৰম সপোন সদায় তোৰ বাবে।",
+    "সোনোৱালী ফূটি উঠা ফুলৰ দৰে মৰম।",
+    "তোমাৰ হাতত হাত ধৰি আগুৱাওঁ তোমাৰ পথ।"
+  ];
 
-    function checkAnswer() {
-      const input = document.getElementById("answerBox").value.trim().toLowerCase();
-      const correct = quiz[step].ans.toLowerCase();
-      const feedbackDiv = document.getElementById("feedback");
-      feedbackDiv.innerHTML = ""; // Clear before
-      if (input === correct) {
-        let html = `<img src="${photoLinks[step]}" class="photo" alt="Our Photo">`;
-        html += `<div class="lyric">${quiz[step].lyric}</div>`;
-        html += `<div style="font-size:1em;color:#c2185b;margin:8px 0;">${quiz[step].msg}</div>`;
-        html += `<img src="${gifLinks[step]}" class="gif" alt="GIF">`;
-        feedbackDiv.innerHTML = html;
-        step++;
-        if (step < quiz.length) {
-          setTimeout(function() {
-            feedbackDiv.innerHTML = "";
-            document.getElementById("question").innerText = quiz[step].q;
-            document.getElementById("answerBox").value = "";
-          }, 3200);
-        } else {
-          setTimeout(function() {
-            feedbackDiv.innerHTML = `<img src="${photoLinks[3]}" class="photo" alt="Last Photo">
-              <div class="lyric">বুকুত মোৰ আশাৰ ৰঙে, এধৰা হাঁহিৰে সজাওঁ।</div>
-              <div style="font-size:1.14em;color:#d81b60;margin:8px 0;"><b>You completed it all! You mean everything.<br>ৰং দিয়া মৰম with you is ♾️!</b></div>
-              <img src="${gifLinks[3]}" class="gif" alt="GIF">
-              <div style="font-size:1.05em;margin-top:16px;color:#ad1457;">Love you, Jinnu jaan!<br>💕</div>`;
-            document.getElementById("question").innerText = "";
-            document.getElementById("answerBox").style.display = "none";
-            document.querySelector("button").style.display = "none";
-          }, 3200);
-        }
-      } else {
-        feedbackDiv.innerHTML = `<div style="color:#ad1457;font-size:1.07em;">Oops! Try again, jaan.</div>`;
-      }
+  // GIF links of cute cartoon couples from public sources (can replace with actual URLs)
+  const gifLinks = [
+    "https://media.giphy.com/media/1BdIjlIex4kEi/giphy.gif",
+    "https://media.giphy.com/media/PPd9GsXYH3m6g/giphy.gif",
+    "https://media.giphy.com/media/xUOxfjsWgfHb4W5IZC/giphy.gif",
+    "https://media.giphy.com/media/CnJPvlBj9s6Tm/giphy.gif",
+    "https://media.giphy.com/media/3oEjI5VtIhHvK37WYo/giphy.gif",
+    "https://media.giphy.com/media/3oz8xDpDgAcmv3lG8M/giphy.gif",
+    "https://media.giphy.com/media/l4JyOCNEfXvVYEqB2/giphy.gif",
+    "https://media.giphy.com/media/26gsspf1u7ry7rZrS/giphy.gif"
+  ];
+
+  const questionElem = document.getElementById("question");
+  const yesBtn = document.getElementById("yes-button");
+  const noBtn = document.getElementById("no-button");
+  const rewardGif = document.getElementById("reward-gif");
+  const lyricsElem = document.getElementById("lyrics");
+
+  let currentIndex = 0;
+
+  function showQuestion(index) {
+    questionElem.textContent = questions[index];
+    rewardGif.style.display = "none";
+    lyricsElem.textContent = "";
+  }
+
+  function showReward(index) {
+    rewardGif.src = gifLinks[index];
+    rewardGif.style.display = "block";
+    lyricsElem.textContent = lyricsLines[index];
+  }
+
+  yesBtn.addEventListener("click", () => {
+    showReward(currentIndex);
+    currentIndex++;
+    if (currentIndex >= questions.length) {
+      currentIndex = 0; // loop back to start
     }
-  </script>
-  <div style="margin-top: 50px; font-size: 0.89em; color: #b71c1c;">
-    © 2025 | Made with 💖 by Zubair for Jinnu Jaan
-  </div>
+    setTimeout(() => {
+      showQuestion(currentIndex);
+    }, 3500);
+  });
+
+  noBtn.addEventListener("click", () => {
+    alert("Please say yes to my heart! ❤️");
+  });
+
+  showQuestion(currentIndex);
+
+  // Hearts background animation
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.setProperty('--x', (Math.random() * 2 - 1).toFixed(2));
+    heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 350);
+</script>
+
 </body>
 </html>
