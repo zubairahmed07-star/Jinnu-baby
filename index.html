@@ -1,140 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Jinnu jaan • Endless Us</title>
-<link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
-<style>
-body {
-    background: linear-gradient(120deg, #ffd7ea 0%, #ffe8f0 70%, #ffeef8 100%);
-    font-family: 'Quicksand', Arial, sans-serif;
-    margin: 0;
-    min-height: 100vh;
-    color: #a0456a;
-}
-.main-card {
-    background: #fff7fb;
-    border-radius: 22px;
-    box-shadow: 0 10px 32px rgba(220,120,170,0.12);
-    padding: 36px 25px 27px 25px;
-    max-width: 410px;
-    min-width: 310px;
-    margin: 44px auto 0 auto;
-    text-align: center;
-}
-.header {
-    font-weight: bold;
-    font-size: 1.36rem;
-    color: #bc4d8b;
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-}
-.subtext {
-    font-size: 1.13rem;
-    color: #da69a0;
-    margin-bottom: 13px;
-}
-.question {
-    margin: 22px 0 27px 0;
-    padding: 14px;
-    background: #fae4ef;
-    border-radius: 12px;
-    color: #b05a7a;
-    font-size: 1.15rem;
-    min-height: 38px;
-}
-.button-group {
-    margin-bottom: 10px;
-}
-.btn {
-    background: #ffb3de;
-    color: #fff;
-    border: none;
-    border-radius: 18px;
-    padding: 13px 0;
-    width: 138px;
-    margin: 0 7px 16px 7px;
-    font-size: 1.09rem;
-    font-family: inherit;
-    box-shadow: 0 2px 12px rgba(220,110,120,0.09);
-    transition: background 0.3s;
-    cursor: pointer;
-}
-.btn:hover {
-    background: #fd95c3;
-}
-.footer {
-    margin-top: 28px;
-    color: #be5c79;
-    font-size: 1rem;
-    text-align: center;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Rong Diya Morom | For Jinnu Jaan</title>
+  <style>
+    body {
+      background: #ffe6f2;
+      font-family: 'Arial Rounded MT', Arial, sans-serif;
+      color: #ad1457;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+    .quiz-card {
+      background: #fff8fc;
+      border-radius: 15px;
+      box-shadow: 0 0 18px #ad145799;
+      margin: 30px auto;
+      padding: 24px 16px;
+      max-width: 330px;
+      min-height: 220px;
+    }
+    input[type='text'] {
+      border: 1.5px solid #ad1457;
+      border-radius: 8px;
+      font-size: 1.1em;
+      padding: 5px 10px;
+      outline: none;
+    }
+    button {
+      background: #fa92c7;
+      border-radius: 8px;
+      border: none;
+      color: #fff;
+      padding: 8px 20px;
+      font-size: 1em;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    img.photo {
+      width: 200px;
+      border-radius: 16px;
+      box-shadow: 0 0 9px #ad145733;
+      margin: 8px 0;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .lyric {
+      font-family: 'Baloo Da 2', cursive;
+      font-size: 1.1em;
+      margin: 14px 0 5px;
+      color: #d81b60;
+    }
+    .gif {
+      width: 90px;
+      margin: 5px auto;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-<div class="main-card">
-    <div class="header">Jinnu jaan</div>
-    <div class="subtext">07012024 &nbsp; ♾️</div>
-    <div class="question" id="mainQuestion"></div>
-    <div class="button-group" id="buttons">
-        <button class="btn" id="yesBtn" onclick="handleAnswer(true)">Yes</button>
-        <button class="btn" id="noBtn" onclick="handleAnswer(false)">No</button>
-    </div>
-</div>
-<div class="footer">Made with endless care for <span style="color:#ff69b4;font-weight:bold;">Jinnat</span></div>
-<script>
-const milestones = [
-    "Open me... let's continue us? 💗",
-    "Will you promise: no more bad words or behaviour between us?",
-    "Let us start the endless one, together?",
-    "Thank you for believing in us, Jinnat! 💖"
-];
-const romanticQuestions = [
-    "Would you let me make you smile, even today?",
-    "Can we turn every 'No' into a sweet new beginning?",
-    "Will you let laughter replace sadness every time?",
-    "Are you willing to trust me for another chance?",
-    "Can your heart forgive and grow with mine?",
-    "Will you let love change our destiny?",
-    "Is happiness with me still your wish?",
-    "Would you dance with me through every season, Jinnat?",
-    "Can you imagine our laughter lasting a lifetime?",
-    "Is togetherness our happiest place?",
-    "Will you say yes to forever with me?"
-];
-let step = 0, romanticIdx = 0, inRomantic = false;
+  <h2 style="margin-top:18px;">💕 Rong Diya Morom 💕<br>For Jinnu Jaan</h2>
 
-function showStep() {
-    document.getElementById("mainQuestion").innerHTML = milestones[step];
-}
-function showRomanticQuestion() {
-    inRomantic = true;
-    document.getElementById("mainQuestion").innerHTML = romanticQuestions[romanticIdx % romanticQuestions.length];
-    romanticIdx++;
-}
-function handleAnswer(isYes) {
-    if (!inRomantic) {
-        if (isYes) {
-            step++;
-            if (step < milestones.length) {
-                showStep();
-            } else {
-                document.getElementById("mainQuestion").innerHTML = milestones[milestones.length - 1];
-                document.getElementById("buttons").style.display = "none";
-            }
+  <!-- Embedded Assamese song (can autoplay if you choose) -->
+  <div style="margin: 15px 0;">
+    <iframe width="295" height="56" src="https://www.youtube.com/embed/rFoUDT361h0?autoplay=1" title="Rong Diya Morom" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div style="font-size:0.92em;color:#c2185b;">(Rong Diya Morom – Zubeen Garg & Shreya Ghoshal – Assamese Romance)</div>
+  </div>
+
+  <div class="quiz-card" id="quizCard">
+    <div id="question"></div>
+    <input type="text" id="answerBox" placeholder="Type your answer here..."/>
+    <button onclick="checkAnswer()">Submit</button>
+    <div id="feedback"></div>
+  </div>
+
+  <script>
+    // PHOTO and GIF links (upload GIFs to Giphy/Tenor, or link directly from suggested sites)
+    const photoLinks = [
+      '1000026775.jpg',
+      '1000026421.jpg',
+      '1000027244.jpg',
+      '1000026783.jpg'
+    ];
+    const gifLinks = [
+      'https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif', // hearts pop
+      'https://media.giphy.com/media/10tIjpzIu8fe0/giphy.gif', // blushing
+      'https://media.giphy.com/media/WS6OGV1JJy2ic/giphy.gif', // romantic hearts
+      'https://media.giphy.com/media/l3vR9O6O6vN9cRr7y/giphy.gif' // love confetti
+    ];
+    // QUIZ (questions, correct answers, romantic lines, lyrics)
+    const quiz = [
+      {
+        q: "What's our anniversary date?",
+        ans: "07 01 2024",
+        msg: "You remembered our special day—every moment with you feels magical!",
+        lyric: "ৰং দিয়া মৰম ৰং ভাল পোৱা সজাও ৰামধেনু"
+      },
+      {
+        q: "What's Zubair's favorite food?",
+        ans: "biryani",
+        msg: "Yes! The best biryani—only because you know my heart.",
+        lyric: "এবুকু মৰমৰ বাহিৰে মোৰ বুলিবলে আছে কিনো"
+      },
+      {
+        q: "Where does Zubair go every day?",
+        ans: "gym",
+        msg: "You know my strength and where I love to go. You make every day better.",
+        lyric: "ৰং জীৱনৰে সুখ দুখৰে সজাও ৰামধেনু"
+      }
+    ];
+    let step = 0;
+
+    document.getElementById("question").innerText = quiz[step].q;
+
+    function checkAnswer() {
+      const input = document.getElementById("answerBox").value.trim().toLowerCase();
+      const correct = quiz[step].ans.toLowerCase();
+      const feedbackDiv = document.getElementById("feedback");
+      feedbackDiv.innerHTML = ""; // Clear before
+      if (input === correct) {
+        let html = `<img src="${photoLinks[step]}" class="photo" alt="Our Photo">`;
+        html += `<div class="lyric">${quiz[step].lyric}</div>`;
+        html += `<div style="font-size:1em;color:#c2185b;margin:8px 0;">${quiz[step].msg}</div>`;
+        html += `<img src="${gifLinks[step]}" class="gif" alt="GIF">`;
+        feedbackDiv.innerHTML = html;
+        step++;
+        if (step < quiz.length) {
+          setTimeout(function() {
+            feedbackDiv.innerHTML = "";
+            document.getElementById("question").innerText = quiz[step].q;
+            document.getElementById("answerBox").value = "";
+          }, 3200);
         } else {
-            showRomanticQuestion();
+          setTimeout(function() {
+            feedbackDiv.innerHTML = `<img src="${photoLinks[3]}" class="photo" alt="Last Photo">
+              <div class="lyric">বুকুত মোৰ আশাৰ ৰঙে, এধৰা হাঁহিৰে সজাওঁ।</div>
+              <div style="font-size:1.14em;color:#d81b60;margin:8px 0;"><b>You completed it all! You mean everything.<br>ৰং দিয়া মৰম with you is ♾️!</b></div>
+              <img src="${gifLinks[3]}" class="gif" alt="GIF">
+              <div style="font-size:1.05em;margin-top:16px;color:#ad1457;">Love you, Jinnu jaan!<br>💕</div>`;
+            document.getElementById("question").innerText = "";
+            document.getElementById("answerBox").style.display = "none";
+            document.querySelector("button").style.display = "none";
+          }, 3200);
         }
-    } else {
-        if (isYes) {
-            inRomantic = false;
-            showStep();
-        } else {
-            showRomanticQuestion();
-        }
+      } else {
+        feedbackDiv.innerHTML = `<div style="color:#ad1457;font-size:1.07em;">Oops! Try again, jaan.</div>`;
+      }
     }
-}
-showStep();
-</script>
+  </script>
+  <div style="margin-top: 50px; font-size: 0.89em; color: #b71c1c;">
+    © 2025 | Made with 💖 by Zubair for Jinnu Jaan
+  </div>
 </body>
 </html>
