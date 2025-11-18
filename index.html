@@ -27,35 +27,84 @@
       gap: 24px;
     }
     .cartoon-container img {
-      width: 135px;
-      height: 135px;
+      width: 120px;
+      height: 120px;
       object-fit: cover;
-      border-radius: 17px;
-      box-shadow: 0 8px 26px #f1b0da66;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px #f1b0da66;
       background: #fff7fb;
-      border: 3px solid #f9b5cd;
+      border: 2.5px solid #f9b5cd;
     }
     .letter-btn {
-      padding: 18px 32px;
-      font-size: 1.3em;
+      padding: 16px 36px;
+      font-size: 1.2em;
       background: #ffe0ee;
       border-radius: 30px;
       border: none;
       color: #ee409a;
       box-shadow: 0 5px 20px #ffb7e4aa;
       cursor: pointer;
-      margin-top: 36px;
+      margin-top: 34px;
       font-weight: bold;
       display: inline-block;
       transition: background 0.2s;
-      letter-spacing: 1px;
+      letter-spacing: .5px;
     }
     .letter-btn:hover {
       background: #ffd1ea;
     }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 99;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(140, 115, 171, 0.36);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff1fa;
+      margin: auto;
+      padding: 30px 14px 20px 14px;
+      border: 2px solid #ffcce6;
+      border-radius: 22px;
+      width: 90%;
+      max-width: 340px;
+      text-align: center;
+      box-shadow: 0 5px 35px #d895d933;
+      font-size: 1.3em;
+      color: #d95ca6;
+      line-height: 1.45;
+      position: relative;
+    }
+    .close {
+      color: #b0416d;
+      position: absolute;
+      top: 8px;
+      right: 14px;
+      font-size: 1.9em;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 2px 8px;
+      border-radius: 12px;
+      transition: background 0.2s;
+    }
+    .close:hover {
+      background: #ffe0ee;
+    }
+    .footer {
+      margin-top: 42px;
+      font-size: 1em;
+      color: #9b69a7;
+      opacity: 0.72;
+    }
     .message {
       font-size: 1.15em;
-      margin-top: 20px;
+      margin-top: 24px;
       background: #faf2ff;
       border-radius: 19px;
       display: inline-block;
@@ -64,39 +113,34 @@
       color: #a94679;
       max-width: 95%;
     }
-    .footer {
-      margin-top: 42px;
-      font-size: 1em;
-      color: #9b69a7;
-      opacity: 0.7;
-    }
   </style>
-  <script>
-    function showPopUp() {
-      alert('तुम हुस्न-ए-परी, तुम जान-ए-जहां, 
-तुम सबसे हसीं, तुम सबसे जवां, 
-सौंदर्य इंसान, जन्नत।');
-    }
-  </script>
 </head>
 <body>
   <div class="title">👑 Happy Princess Day, Jinnu Jaan! 💖</div>
-
   <div class="cartoon-container">
-    <img src="https://i.imgur.com/GODF5Z3.png" alt="Cute princess cartoon">
-    <img src="https://i.imgur.com/Ccsb1v2.png" alt="Cute couple cartoon">
-    <img src="https://i.imgur.com/FoYXAVy.png" alt="Happy cartoon bear">
-    <img src="https://i.imgur.com/y0QgfHF.png" alt="Couple heart cartoon">
+    <img src="https://cdn.pixabay.com/photo/2014/04/02/10/47/princess-304475_1280.png" alt="Princess cartoon"/>
+    <img src="https://cdn.pixabay.com/photo/2013/07/12/12/57/heart-146189_1280.png" alt="Cute heart cartoon"/>
+    <img src="https://cdn.pixabay.com/photo/2017/01/31/15/12/love-2027974_1280.png" alt="Boy girl cartoon"/>
+    <img src="https://cdn.pixabay.com/photo/2021/07/27/07/43/cartoon-6498132_1280.png" alt="Cute girl cartoon"/>
   </div>
-
-  <button class="letter-btn" onclick="showPopUp()">💌 Open me</button>
-
+  <button class="letter-btn" onclick="document.getElementById('modal').style.display='flex';">
+    💌 Open me
+  </button>
   <div class="message">
     Princess, you are the most beautiful, <br>
-    the one who makes every day special—my one and only fairy. <br>
+    the one who makes every day special—my one and only fairy.<br>
     Happy Princess Day, meri Jaan!
   </div>
-
+  <div id="modal" class="modal" onclick="if(event.target == this){this.style.display='none';}">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('modal').style.display='none';">&times;</span>
+      <div style="margin-bottom:12px;">
+        <strong>तुम हुस्न-ए-परी, तुम जान-ए-जहां,<br>
+        तुम सबसे हसीं, तुम सबसे जवां,<br>
+        सौंदर्य इंसान, जिन्नत।</strong>
+      </div>
+    </div>
+  </div>
   <div class="footer">
     Made with love for Jinnu Jaan — Your forever admirer
   </div>
